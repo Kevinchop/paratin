@@ -39,7 +39,7 @@ class Centralpersona extends Component
     public function render()
     {
         $this->cantPersonas = Persona::count();
-        $this->tipos = Tipo::orderby('nombre', 'asc');
+        $this->tipos = Tipo::orderby('nombre', 'asc')->get();
         $this->personas = Persona::where('dni', 'like', '%' . $this->consulta . '%')->orderby('apellido', 'asc')->get();
         return view('livewire.centralpersona');
     }
