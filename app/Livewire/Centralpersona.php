@@ -80,6 +80,8 @@ class Centralpersona extends Component
         $persona->fecha_nac = $this->fecha_nac;
         $persona->direccion = $this->direccion;
         $persona->departamento_id = $this->departamento;
+        $persona->telefono = $this->telefono;
+        $persona->categoria_id = $this->categoria;
         $persona->matricula = $this->matricula;
         $persona->tipo_id = $this->tipo;
         $persona->save();
