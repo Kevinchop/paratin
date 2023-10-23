@@ -15,16 +15,16 @@ class Persona extends Model
 
     public function tipo()
     {
-        $this->belongsTo(Tipo::class);
+        return $this->belongsTo(Tipo::class);
     }
 
     public function categoria()
     {
-        $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Categoria::class);
     }
 
     public function departamento()
     {
-        $this->belongsTo(Departamento::class);
+        return $this->belongsTo(Departamento::class);
     }
 }
