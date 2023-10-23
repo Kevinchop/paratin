@@ -22,4 +22,9 @@ class Persona extends Model
     {
         $this->belongsTo(Categoria::class);
     }
+
+    public function departamento()
+    {
+        $this->belongsTo(Departamento::class);
+    }
 }

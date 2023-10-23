@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('dni', 11);
             $table->date('fecha_nac');
             $table->string('direccion', 100);
+            $table->bigInteger('departamento_id')->default(10);
             $table->string('telefono', 20);
-            $table->bigInteger('categoria_id')->nullable();
+            $table->string('matricula', 30);
             $table->bigInteger('tipo_id')->nullable();
+            $table->bigInteger('categoria_id')->nullable();
             $table->timestamps();
         });
     }

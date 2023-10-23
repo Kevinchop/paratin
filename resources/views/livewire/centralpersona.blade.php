@@ -1,4 +1,39 @@
 <div>
+    {{-- Carga de items especiales --}}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <input class="form-control col-sm-10" type="text" placeholder="[Departamento]: Ej.: Parana" wire:model='departamento_tabla'>
+                        <button class="btn btn-success col-sm-2" wire:click='guardarDepartamento'>OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <input class="form-control col-sm-10" type="text" placeholder="[Tipo de Matricula]: Ej.: Nacional" wire:model='tipo_tabla'>
+                        <button class="btn btn-info col-sm-2" wire:click='guardarTipo'>OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <input class="form-control col-sm-10" type="text" placeholder="[Categoria]: Ej.: Jugador" wire:model='categoria_tabla'>
+                        <button class="btn btn-primary col-sm-2" wire:click='guardarCategoria'>OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Formulario de carga de personas --}}
     <div class="row">
         <div class="col-md-12">
             <div class="card pos-f-t">
@@ -8,7 +43,7 @@
                         data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <!-- <span class="navbar-toggler-icon"></span> -->
-                        <i class="fas fa-file-code"></i>
+                        <i class="fas fa-user-plus"></i>
                     </button>
                     <div class="form-inline">
                         <label for="tipo_conversion" class="mr-2 text-light">({{ $cantPersonas }}) Personas</label>
@@ -26,8 +61,22 @@
                     <!-- CONTENIDO OCULTO PARA AHORRAR ESPACIO -->
                     <div class="container">
                         <div class="card-body">
+
+                            {{-- 1era fila de datos --}}
                             <div class="form-row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="nombre">DNI</label>
+                                        <input class="form-control" name="nombre" wire:model="dni" type="text"
+                                            placeholder="Ej.: 34017257">
+                                        @error('dni')
+                                            {{-- cuando no es un componente x-adminlte, no hay que ponerle el @error() --}}
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="nombre">Nombre</label>
                                         <input class="form-control" name="nombre" wire:model="nombre" type="text"
@@ -39,19 +88,80 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="nombre">Apellido</label>
-                                        <input class="form-control" name="etiqueta" wire:model="apellido" type="text"
+                                        <input class="form-control" name="apellido" wire:model="apellido" type="text"
                                             placeholder="Ej.: Perez...">
-                                        @error('desarrollo')
+                                        @error('apellido')
                                             {{-- cuando es un componente x-adminlte, no hay que ponerle el @error() --}}
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
 
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="fecha">Fecha</label>
+                                        <!--INPUT de la fecha / wire:model apunta a la variable hecha en app/livewire/controlador -->
+                                        <input type="date" wire:model="fecha_nac" class="form-control" id="fecha">
+                                        @error('fecha_nac')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {{-- 2da fila de datos --}}
+                            <div class="form-row">
+
                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Direccion</label>
+                                        <input class="form-control" type="text" wire:model='direccion' placeholder="Ej.: Malvinas 123..." />
+                                        @error('direccion')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Telefono</label>
+                                        <input class="form-control" type="text" wire:model='telefono' placeholder="Ej.: 3434123456" />
+                                        @error('telefono')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="tipo">Departamento</label>
+                                        <select class="form-control" name="tipo" id="tipo"
+                                            wire:model='departamento'>
+                                            @foreach ($departamentos as $departamento)
+                                                <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- 3da fila de datos --}}
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Matricula</label>
+                                        <input class="form-control" type="text" wire:model='matricula' placeholder="ni idea... la matricula..." />
+                                        @error('matricula')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tipo">Tipo</label>
                                         <select class="form-control" name="tipo" id="tipo" wire:model='tipo'>
@@ -61,25 +171,36 @@
                                         </select>
                                     </div>
                                 </div>
-
-
                             </div>
-                            <div class="form-group">
-                                <label for="fecha">Fecha</label>
-                                <!--INPUT de la fecha / wire:model apunta a la variable hecha en app/livewire/controlador -->
-                                <input type="date" wire:model="fecha" class="form-control" id="fecha">
-                                @error('fecha')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
+
                             <div class="form-group d-flex mb-0">
                                 <button class="btn btn-success ml-auto" name="agregarpersona"
-                                    wire:click="agregarpersona">Agregar</button>
+                                    wire:click="guardarPersona">Agregar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    {{-- Busqueda y credencial --}}
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body overflow-auto pl-1 py-0" style="min-height: 400px; max-height: 400px;">
+                    {{-- algo de la busqueda --}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card" style="min-height: 300px; max-height: 300px;">
+                <div class="card-header"></div>
+                <div class="card-body"></div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+
     </div>
 </div>
