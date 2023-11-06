@@ -26,15 +26,11 @@ class Centralpersona extends Component
     public $dni;
     public $fecha_nac;
     public $direccion;
-    public $departamento; //id del departamento
+    public $departamento = 10; //id del departamento
     public $telefono;
     public $categoria; //id de la categoria
     public $matricula;
     public $tipo; //id del tipo
-
-    public $categoria_tabla;
-    public $tipo_tabla;
-    public $departamento_tabla;
 
     //Variables de UPDATE
     public $apellido_upd;
@@ -89,32 +85,7 @@ class Centralpersona extends Component
         $this->reset();
     }
 
-    public function guardarDepartamento()
-    {
-        $departamento = new Departamento();
-        $departamento->nombre = $this->departamento_tabla;
-        $departamento->save();
 
-        $this->departamento_tabla = "";
-    }
-
-    public function guardarTipo()
-    {
-        $tipo = new Tipo();
-        $tipo->nombre = $this->tipo_tabla;
-        $tipo->save();
-
-        $this->tipo_tabla = "";
-    }
-
-    public function guardarCategoria()
-    {
-        $categoria = new Categoria();
-        $categoria->nombre = $this->categoria_tabla;
-        $categoria->save();
-
-        $this->categoria_tabla = "";
-    }
 
     public function editClose()
     {

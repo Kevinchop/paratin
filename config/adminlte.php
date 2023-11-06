@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => '| Patin del Club Paracao |',
+    'title' => '| FEDERACION ENTREARRIANA DE PATIN |',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Patin</b>', //TITULO DEL LOGIN
+    'logo' => ' ', //TITULO DEL LOGIN - Si no le pones algo, explota dentro. Queda como titulo al lado del Logo, dentro y fuera del Dash
     'logo_img' => 'vendor/adminlte/dist/img/patin_logo.png', //LOGO DEL LOGIN
     'logo_img_class' => 'brand-image img-circle elevation-3', // CLASE DEL LOGIN
     'logo_img_xl' => null,
@@ -261,7 +261,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '#',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -322,17 +322,17 @@ return [
         [
             'text'        => 'Personas',
             'url'         => '/dashboard',
-            'icon'        => 'far fa-fw fa-user',
+            'icon'        => 'far fa-fw fa-user mr-2',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        // [
-        //     'text'        => 'otra_opcion',
-        //     'url'         => '/ruta_otra_opcion',
-        //     'icon'        => 'far fa-fw fa-file',
-        //     'label'       => 2,
-        //     'label_color' => 'danger',
-        // ],
+        [
+            'text'        => 'Items Adicionales',
+            'url'         => '/adicionales',
+            'icon'        => 'fas fa-tags mr-2',
+            // 'label'       => 2,
+            // 'label_color' => 'danger',
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

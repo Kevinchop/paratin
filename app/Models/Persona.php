@@ -27,4 +27,9 @@ class Persona extends Model
     {
         return $this->belongsTo(Departamento::class);
     }
+
+    public function sexo()
+    {
+        return $this->belongsTo(Sexo::class);
+    }
 }

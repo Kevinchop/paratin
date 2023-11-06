@@ -1,38 +1,4 @@
 <div>
-    {{-- Carga de items especiales --}}
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-row">
-                        <input class="form-control col-sm-10" type="text" placeholder="[Departamento]: Ej.: Parana" wire:model='departamento_tabla'>
-                        <button class="btn btn-success col-sm-2" wire:click='guardarDepartamento'>OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-row">
-                        <input class="form-control col-sm-10" type="text" placeholder="[Tipo de Matricula]: Ej.: Nacional" wire:model='tipo_tabla'>
-                        <button class="btn btn-info col-sm-2" wire:click='guardarTipo'>OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-row">
-                        <input class="form-control col-sm-10" type="text" placeholder="[Categoria]: Ej.: Jugador" wire:model='categoria_tabla'>
-                        <button class="btn btn-primary col-sm-2" wire:click='guardarCategoria'>OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     {{-- Formulario de carga de personas --}}
     <div class="row">
         <div class="col-md-12">

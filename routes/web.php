@@ -26,7 +26,7 @@ Route::middleware([
     Route::get('/dashboard', [DashController::class, 'index'])->name('dashboard');
 
     //Acá van otras rutas...
-    // Route::get('/usuario', function(){
-    //     return view('usuario');
-    // });
+    Route::get('/adicionales', function(){
+        return view('adicionales');
+    });
 });
