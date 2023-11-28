@@ -11002,3 +11002,19 @@ header.masthead h1, header.masthead .h1 {
   height: 50px;
   width: auto;
 }
+
+/* Prueba de Credencial INDEX*/
+.profile {
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10%;
+    left: 13%;
+    max-width: 100px;
+    opacity: 1;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 1);
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    z-index: 99999;
+  }
+

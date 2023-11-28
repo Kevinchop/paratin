@@ -17,17 +17,18 @@ return new class extends Migration
             $table->string('apellido', 100);
             $table->string('nombre', 100);
             $table->date('fecha_nac');
-            $table->bigInteger('sexo_id');
-            $table->string('direccion', 100);
-            $table->bigInteger('departamento_id');
-            $table->bigInteger('localidad_id');
-            $table->string('telefono', 20);
-            $table->bigInteger('clube_id');
-            $table->string('matricula_nac', 30);
-            $table->string('matricula_prov', 30);
-            $table->bigInteger('anio');
-            $table->bigInteger('estado_id'); //Activo o Vencido
+            $table->bigInteger('sexo_id')->nullable();
+            $table->string('direccion', 100)->nullable();
+            $table->bigInteger('departamento_id')->nullable();
+            $table->bigInteger('localidade_id')->nullable();
+            $table->string('telefono', 20)->nullable();
+            $table->bigInteger('clube_id')->nullable();
+            $table->string('matricula_nac', 30)->nullable();
+            $table->string('matricula_prov', 30)->nullable();
+            $table->bigInteger('anio')->nullable();
+            $table->bigInteger('estado_id')->nullable(); //Activo o Vencido
             $table->bigInteger('tipo_id')->nullable(); //tipo_ente
+            $table->string('imagen', 50)->nullable();
             $table->timestamps();
         });
     }

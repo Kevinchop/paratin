@@ -23,14 +23,14 @@
                     </div>
                 </nav>
                 <!-- CONTENIDO A DESPLEGARSE -->
-                <div class="collapse" id="navbarToggleExternalContent">
+                <div class="collapse show" id="navbarToggleExternalContent">
                     <!-- CONTENIDO OCULTO PARA AHORRAR ESPACIO -->
                     <div class="container">
                         <div class="card-body">
 
                             {{-- 1era fila de datos --}}
                             <div class="form-row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="nombre">DNI</label>
                                         <input class="form-control" name="nombre" wire:model="dni" type="text"
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="fecha">Fecha</label>
                                         <!--INPUT de la fecha / wire:model apunta a la variable hecha en app/livewire/controlador -->
@@ -77,12 +77,28 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="sexo">Sexo</label>
+                                        <!--INPUT de la fecha / wire:model apunta a la variable hecha en app/livewire/controlador -->
+                                        <select class="form-control" name="sexo" id="" wire:model='sexo'>
+                                            @foreach ($sexos as $sexo)
+                                                <option value="{{ $sexo->id }}">{{ $sexo->nombre }}</option>
+                                            @endforeach
+
+                                        </select>
+                                        @error('sexo')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
                             </div>
 
                             {{-- 2da fila de datos --}}
                             <div class="form-row">
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Direccion</label>
                                         <input class="form-control" type="text" wire:model='direccion' placeholder="Ej.: Malvinas 123..." />
@@ -92,7 +108,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Telefono</label>
                                         <input class="form-control" type="text" wire:model='telefono' placeholder="Ej.: 3434123456" />
@@ -101,13 +117,28 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="tipo">Departamento</label>
-                                        <select class="form-control" name="tipo" id="tipo"
-                                            wire:model='departamento'>
+                                        <select class="form-control" name="departamento" id="departamento"
+                                            wire:model.live='departamento'>
                                             @foreach ($departamentos as $departamento)
-                                                <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
+                                                <option value="{{ $departamento->id }}">
+                                                    {{ $departamento->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="tipo">Localidad</label>
+                                        <select class="form-control" name="localidad" id="localidad"
+                                            wire:model='localidad'>
+                                            @foreach ($localidades as $localidad)
+                                                <option value="{{ $localidad->id }}">
+                                                    {{ $localidad->nombre }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -115,19 +146,9 @@
                                 </div>
                             </div>
 
-                            {{-- 3da fila de datos --}}
+                            {{-- 3da fila de datos (la mas completa de campos)--}}
                             <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Matricula</label>
-                                        <input class="form-control" type="text" wire:model='matricula' placeholder="ni idea... la matricula..." />
-                                        @error('matricula')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="tipo">Tipo</label>
                                         <select class="form-control" name="tipo" id="tipo" wire:model='tipo'>
@@ -137,8 +158,64 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Matricula Provincial</label>
+                                        <input class="form-control" type="text" wire:model='matricula_provincial' placeholder="ni idea... la matricula..." />
+                                        @error('matricula_provincial')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Matricula Nacional</label>
+                                        <input class="form-control" type="text" wire:model='matricula_nacional' placeholder="ni idea... la matricula..." />
+                                        @error('matricula_nacional')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="">Año</label>
+                                        <input class="form-control" type="text" wire:model='anio_validez' placeholder="Año validez" />
+                                        @error('anio')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="">Estado</label>
+                                        <select class="form-control" name="estado" id="estado" wire:model='estado'>
+                                            @foreach ($estados as $estado)
+                                                <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
+                            {{-- 4ta fila de datos (por ahora tiene solo el club) --}}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Club</label>
+                                        <select class="form-control" name="club" id="club" wire:model='club'>
+                                            @foreach ($clubes as $club)
+                                                <option value="{{ $club->id }}">{{ $club->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Boton para cargar la persona con la funcion de Livewire --}}
                             <div class="form-group d-flex mb-0">
                                 <button class="btn btn-success ml-auto" name="agregarpersona"
                                     wire:click="guardarPersona">Agregar</button>

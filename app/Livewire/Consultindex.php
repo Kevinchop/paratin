@@ -12,7 +12,11 @@ class Consultindex extends Component
 
     public function render()
     {
-        $this->personas = Persona::where('dni', 'like', '%' . $this->consulta . '%')->orderby('apellido', 'asc')->get();
+        $this->personas = Persona::where('dni', 'like', '%' . $this->consulta . '%')
+                            ->orderby('apellido', 'asc')
+                            ->limit(1)
+                            ->get();
+
         return view('livewire.consultindex');
     }
 }

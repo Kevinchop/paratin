@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->char('codigo', 1);
             $table->string('nombre', 50);
+            $table->string('imagen', 40)->default('ente_generico.svg');
             $table->timestamps();
         });
     }

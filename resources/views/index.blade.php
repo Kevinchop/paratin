@@ -4,7 +4,7 @@
 
 @section('brander')
     <a class="navbar-brand" href="#">
-        <img src="assets/img/logo_index.png" class="img-fluid avatar" alt="">
+        <img src="assets/img/logo_index.svg" class="img-fluid avatar" alt="">
     </a>
 @endsection
 
